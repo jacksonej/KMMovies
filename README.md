@@ -14,7 +14,7 @@ UI
 
 Screenshots
 
-![](art/android.png)
+<img src="https://github.com/jacksonej/KMMovies/raw/master/art/android.png" width="150">
 ![](art/ios.png)
 ![](art/desktop.png)
 ![](art/web.png)
