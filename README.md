@@ -12,6 +12,13 @@ UI
 - Desktop (Compose for Desktop)
 - web (Compose web)
 
+Screenshots
+
+![](art/android.png)
+![](art/ios.png)
+![](art/desktop.png)
+![](art/web.png)
+
 ## 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any
