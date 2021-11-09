@@ -12,6 +12,8 @@ UI
 - Desktop (Compose for Desktop)
 - web (Compose web)
 
+To run this project Please provide https://www.themoviedb.org/ in commonMain/MovieServiceImpl.kt
+
 Screenshots
 
 <img src="https://github.com/jacksonej/KMMovies/raw/master/art/android.png" width="500">

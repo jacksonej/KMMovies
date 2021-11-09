@@ -15,3 +15,16 @@ keystore.properties
 /androidApp/release
 /compose-web/build
 /shared/build
+/iosApp/Pods/
+
+*.swp
+*~.nib
+
+iosApp/build/
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+xcuserdata/*
+xcuserdata
+DerivedData
