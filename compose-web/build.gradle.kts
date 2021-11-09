@@ -37,9 +37,3 @@ afterEvaluate {
         versions.webpackCli.version = "4.9.0"
     }
 }
-
-compose.desktop {
-    application {
-        mainClass = ""
-    }
-}
