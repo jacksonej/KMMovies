@@ -1,5 +1,5 @@
 # KMMovies
-A Kotlin Multiplatform Project using TMDB Api(https://www.themoviedb.org/). Currently this project is implemented in following pltforms
+A Kotlin Multiplatform Project using TMDB Api(https://www.themoviedb.org/). Currently this project is implemented in following platforms
 
 - Android
 - iOS
