@@ -8,9 +8,9 @@ A Kotlin Multiplatform Project using TMDB Api(https://www.themoviedb.org/). Curr
 
 UI
 - iOS (SwiftUI)
-- macOS (SwiftUI)
 - Android (Jetpack Compose)
 - Desktop (Compose for Desktop)
+- web (Compose web)
 
 ## 🤝 Contributing
 
