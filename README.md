@@ -14,10 +14,11 @@ UI
 
 Screenshots
 
-<img src="https://github.com/jacksonej/KMMovies/raw/master/art/android.png" width="150">
-![](art/ios.png)
-![](art/desktop.png)
-![](art/web.png)
+<img src="https://github.com/jacksonej/KMMovies/raw/master/art/android.png" width="500">
+<img src="https://github.com/jacksonej/KMMovies/raw/master/art/ios.png" width="500">
+<img src="https://github.com/jacksonej/KMMovies/raw/master/art/desktop.png" width="500">
+<img src="https://github.com/jacksonej/KMMovies/raw/master/art/web.png" width="500">
+
 
 ## 🤝 Contributing
 
