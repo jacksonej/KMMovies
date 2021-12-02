@@ -12,7 +12,7 @@ UI
 - Desktop (Compose for Desktop)
 - web (Compose web)
 
-To run this project Please provide https://www.themoviedb.org/ in commonMain/MovieServiceImpl.kt
+To run this project Please provide https://www.themoviedb.org/ ApiKey in commonMain/MovieServiceImpl.kt
 
 Screenshots
 
