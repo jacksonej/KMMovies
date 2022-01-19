@@ -7,6 +7,8 @@ struct ContentView: View {
    // @ObservedObject var peopleInSpaceViewModel = MoviesViewModel(repository: MovieRepository())
     
     @State var movies : [Movie]  = []
+    @State var uiImage : UIImage? = UIImage()
+    @State var refresh: Bool = false
     private var colors: [Color] = [.yellow, .purple, .green]
 
     private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
@@ -14,7 +16,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                    LazyVGrid(columns: gridItemLayout, spacing: 10) {
+                
+                LazyVGrid(columns: gridItemLayout, spacing: 10) {
                         ForEach(movies, id: \.id) {
                             movie in
                             VStack {
@@ -22,16 +25,27 @@ struct ContentView: View {
                                 Text(movie.title).font(.headline).lineLimit(1)
                             }
                         }
-                    }.padding()
+                }.padding()
                 }
                 .navigationBarTitle(Text("Movies "), displayMode: .large)
                 .onAppear ( perform: {
-                        MovieRepository().getMovies(success:  { data in
+                    let repo = MovieRepository()
+                    repo.getMovies(success:  { data in
+                                            DispatchQueue.main.async {
+                                            self.movies = data.results
+                                            }
+                    });
+                    
+                    repo.getImage(url: "https://image.tmdb.org/t/p/w185/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", success: { image in
                         DispatchQueue.main.async {
-                        self.movies = data.results
-                        }
+                                 uiImage = image
+                                  }
+                    }, failure: { error in
+                                  print(error?.description() ?? "")
                     })
-                })
+                }
+               
+                );
         }
     }
 }
@@ -148,3 +162,13 @@ extension ImageCache {
         return imageCache
     }
 }
+
+
+//VStack {
+//    Image(uiImage: uiImage ?? UIImage())
+//                .resizable()
+//                .scaledToFill()
+//                .cornerRadius(10)
+//                .frame(width: 120.0, height: 200.0)
+//    Spacer().frame(height: 20)
+//}

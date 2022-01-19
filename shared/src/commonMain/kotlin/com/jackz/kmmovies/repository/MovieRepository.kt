@@ -12,6 +12,7 @@ class MovieRepository {
 
     private val scope = MainScope()
 
+
     fun getMovies(success: (MovieResponse) -> Unit){
         scope.launch {
             service.getMovies()?.let { success(it) }

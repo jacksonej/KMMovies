@@ -8,6 +8,8 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 
 class MovieServiceImpl(private val client : HttpClient) : MovieService {
+
+
     override suspend fun getMovies() : MovieResponse? {
         try {
             val data = client.get<MovieResponse> {
@@ -15,12 +17,13 @@ class MovieServiceImpl(private val client : HttpClient) : MovieService {
                     protocol = URLProtocol.HTTPS
                     host = HttpRoutes.baseUrl
                     encodedPath = "/trending/movie/week"
-                    parameter("api_key", "Please provide Api key")
+                    parameter("api_key", "acbd932ef470b6bb6cbb0bd2aedac9a6")
                     parameter("page", "1")
                 }
                 headers {
                     append("Accept", "application/json")
                 }
+
             }
             return data
         } catch (e: Exception) {

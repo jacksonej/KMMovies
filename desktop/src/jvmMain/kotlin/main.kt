@@ -4,7 +4,10 @@ import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,14 +21,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import com.jackz.kmmovies.repository.MovieRepository
+import com.jackz.kmmovies.Greeting
 import com.jackz.kmmovies.Movie
+import com.jackz.kmmovies.repository.MovieRepository
 import io.kamel.core.Resource
-import io.kamel.core.config.KamelConfig
-import io.kamel.core.config.takeFrom
 import io.kamel.image.KamelImage
-import io.kamel.image.config.Default
-import io.kamel.image.config.resourcesFetcher
 import io.kamel.image.lazyPainterResource
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
@@ -56,7 +56,7 @@ fun main() = application {
             Column {
                 TopAppBar(
                     title = {
-                        Text(text = "Movies")
+                        Text(text = Greeting().greeting())
                     },
                     elevation = 2.dp
                 )
@@ -95,7 +95,7 @@ public fun SampleImage(movie :Movie, modifier: Modifier = Modifier) {
             KamelImage(resource = imageResource, null,contentScale = ContentScale.Crop, modifier = Modifier.width(180.dp).height(280.dp).clip(RoundedCornerShape(10.dp)), crossfade = true)
         }
         is Resource.Failure -> {
-            Text(text = imageResource.exception.localizedMessage ?: "")
+            Text(text = imageResource.exception.message ?: "")
         }
     }
 }
