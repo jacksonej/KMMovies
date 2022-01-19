@@ -8,9 +8,8 @@ plugins {
     id("kotlinx-serialization")
 }
 
-
 version = "1.0"
-val ktor_version = "1.6.4"
+val ktor_version = "1.6.7"
 
 kotlin {
     android()
@@ -26,7 +25,12 @@ kotlin {
         else
             ::iosX64
 
-    iosTarget("ios") {}
+    //iosTarget("ios") {}
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
+
 
     cocoapods {
         summary = "Some description for the Shared Module"
@@ -71,13 +75,22 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting{
+        
+       // val iosTest by getting
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktor_version")
             }
         }
-        val iosTest by getting
-
         val jvmMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-apache:$ktor_version")
@@ -92,10 +105,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(31)
+        minSdk = 21
+        targetSdk = 32
     }
 }
