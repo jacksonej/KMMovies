@@ -1,5 +1,6 @@
 package com.jackz.kmmovies.android
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jackz.kmmovies.Greeting
@@ -34,12 +35,14 @@ import com.jackz.kmmovies.android.ui.theme.SampleComposeTheme
 import com.jackz.kmmovies.repository.MovieRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 fun greet(): String {
     return Greeting().greeting()
 }
 
+@ExperimentalFoundationApi
 class MainActivity() : ComponentActivity(),CoroutineScope {
 
     private lateinit var job: Job
@@ -49,9 +52,6 @@ class MainActivity() : ComponentActivity(),CoroutineScope {
 
     val scope = CoroutineScope(Job() + Dispatchers.Main)
 
-
-
-    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -70,11 +70,20 @@ class MainActivity() : ComponentActivity(),CoroutineScope {
 @Composable
 fun Greeting(name: String) {
     var movieList by remember { mutableStateOf(emptyList<Movie>()) }
+    var imageBitmap  by remember { mutableStateOf<Bitmap?>(null)}
 
     LaunchedEffect(true) {
-        MovieRepository().getMovies {
+        val repo = MovieRepository()
+        repo.getMovies {
             movieList = it.results
         }
+
+        repo.getImage("https://image.tmdb.org/t/p/w185/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", {
+            imageBitmap = it
+        }, {
+
+        })
+
     }
     Column {
         TopAppBar(
@@ -83,7 +92,10 @@ fun Greeting(name: String) {
             },
             elevation = 2.dp
         )
+
         Spacer(modifier = Modifier.height(16.dp))
+
+
         LazyVerticalGrid(cells = GridCells.Fixed(3), modifier = Modifier.fillMaxSize()) {
             items(movieList) { movies ->
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -105,3 +117,14 @@ fun Greeting(name: String) {
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
+
+
+//Image(
+//painter = rememberImagePainter(imageBitmap),
+//contentDescription = null,
+//contentScale = ContentScale.Crop,
+//modifier = Modifier
+//.width(120.dp)
+//.height(180.dp)
+//.clip(RoundedCornerShape(10.dp))
+//)

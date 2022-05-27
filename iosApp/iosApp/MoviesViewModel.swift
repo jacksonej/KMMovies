@@ -18,8 +18,7 @@ class MoviesViewModel: ObservableObject {
     }
     
     func fetch() {
-        repository.getMovies(success: { data in
-            self.people = data.results
-        })
+        repository.getMovies(success:  { data in
+            });
     }
 }

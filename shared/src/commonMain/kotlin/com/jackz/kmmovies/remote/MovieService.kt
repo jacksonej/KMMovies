@@ -7,7 +7,8 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 
 interface MovieService {
-    suspend fun getMovies() : MovieResponse?
+
+    suspend fun  getMovies() : MovieResponse?
     suspend fun getImage(url: String, success: (Image?) -> Unit, failure: (Throwable?) -> Unit)
 
     companion object {

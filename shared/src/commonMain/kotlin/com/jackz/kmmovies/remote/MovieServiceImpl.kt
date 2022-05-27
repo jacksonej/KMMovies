@@ -8,6 +8,8 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 
 class MovieServiceImpl(private val client : HttpClient) : MovieService {
+
+
     override suspend fun getMovies() : MovieResponse? {
         try {
             val data = client.get<MovieResponse> {
@@ -21,6 +23,7 @@ class MovieServiceImpl(private val client : HttpClient) : MovieService {
                 headers {
                     append("Accept", "application/json")
                 }
+
             }
             return data
         } catch (e: Exception) {
