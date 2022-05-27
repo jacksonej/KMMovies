@@ -17,7 +17,7 @@ class MovieServiceImpl(private val client : HttpClient) : MovieService {
                     protocol = URLProtocol.HTTPS
                     host = HttpRoutes.baseUrl
                     encodedPath = "/trending/movie/week"
-                    parameter("api_key", "")
+                    parameter("api_key", "Please provide Api key")
                     parameter("page", "1")
                 }
                 headers {
