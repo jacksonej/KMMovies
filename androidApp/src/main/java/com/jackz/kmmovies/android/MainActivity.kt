@@ -78,7 +78,7 @@ fun Greeting(name: String) {
             movieList = it.results
         }
 
-        repo.getImage("https://image.tmdb.org/t/p/w185", {
+        repo.getImage("https://image.tmdb.org/t/p/w185/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", {
             imageBitmap = it
         }, {
 
@@ -94,6 +94,7 @@ fun Greeting(name: String) {
         )
 
         Spacer(modifier = Modifier.height(16.dp))
+
 
         LazyVerticalGrid(cells = GridCells.Fixed(3), modifier = Modifier.fillMaxSize()) {
             items(movieList) { movies ->
@@ -119,7 +120,7 @@ fun Greeting(name: String) {
 
 
 //Image(
-//painter = rememberImagePainter("https://image.tmdb.org/t/p/w185/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"),
+//painter = rememberImagePainter(imageBitmap),
 //contentDescription = null,
 //contentScale = ContentScale.Crop,
 //modifier = Modifier
