@@ -11,17 +11,17 @@ plugins {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("androidx.compose.ui:ui:${rootProject.extra["composeVersion"]}")
     implementation("androidx.compose.material:material:${rootProject.extra["composeVersion"]}")
     implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.activity:activity-compose:1.7.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["composeVersion"]}")
     debugImplementation("androidx.compose.ui:ui-tooling:${rootProject.extra["composeVersion"]}")
-    implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
 
 }
@@ -29,11 +29,11 @@ val key: String = gradleLocalProperties(rootDir).getProperty("tmdb_key")
 
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(33)
     defaultConfig {
         applicationId = "com.jackz.kmmovies.android"
         minSdkVersion(21)
-        targetSdkVersion(31)
+        targetSdkVersion(33)
         versionCode = 1
         versionName = "1.0"
         vectorDrawables {
@@ -78,9 +78,12 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = rootProject.extra["composeVersion"] as String
-        kotlinCompilerVersion = "1.5.31"
+        kotlinCompilerExtensionVersion = "1.4.6"
     }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = rootProject.extra["composeVersion"] as String
+//        kotlinCompilerVersion = "1.5.31"
+//    }
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"

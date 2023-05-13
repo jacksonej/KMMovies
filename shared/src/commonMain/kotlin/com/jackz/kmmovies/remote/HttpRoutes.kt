@@ -1,5 +1,5 @@
 package com.jackz.kmmovies.remote
 
 object HttpRoutes {
-    val baseUrl = "api.themoviedb.org/3"
+    const val BASE_URL = "api.themoviedb.org"
 }
