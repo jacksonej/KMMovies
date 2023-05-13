@@ -2,7 +2,7 @@
 
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose") version "1.1.0"
+    id("org.jetbrains.compose") version "1.4.0"
 }
 
 version = "1.0"
@@ -20,8 +20,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.widgets)
-                implementation(compose.web.core)
+                implementation(compose.html.core)
                 implementation(compose.runtime)
 
                 implementation(project(":shared"))
@@ -34,10 +33,7 @@ kotlin {
 afterEvaluate {
     rootProject.extensions.configure<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension> {
         versions.webpackDevServer.version = "4.0.0"
-        versions.webpackCli.version = "4.9.0"
+        versions.webpackCli.version = "4.10.0"
     }
 
-    rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
-        rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().nodeVersion = "16.13.1"
-    }
 }

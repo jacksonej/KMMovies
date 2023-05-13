@@ -2,7 +2,7 @@ import org.jetbrains.compose.compose
 
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose") version "1.1.0"
+    id("org.jetbrains.compose") version "1.4.0"
 }
 
 
@@ -23,7 +23,7 @@ kotlin {
             dependencies {
                 implementation(project(":shared"))
                 implementation(compose.desktop.currentOs)
-                implementation("com.alialbaali.kamel:kamel-image:0.3.0")
+                implementation("com.alialbaali.kamel:kamel-image:0.4.0")
 
             }
         }

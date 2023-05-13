@@ -1,8 +1,8 @@
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -61,7 +61,7 @@ fun main() = application {
                     elevation = 2.dp
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                LazyVerticalGrid(cells = GridCells.Fixed(3), modifier = Modifier.fillMaxSize()) {
+                LazyVerticalGrid(columns = GridCells.Fixed(3), modifier = Modifier.fillMaxSize()) {
                     items(movieList) { movies ->
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             SampleImage(
@@ -87,7 +87,7 @@ public fun SampleImage(movie :Movie, modifier: Modifier = Modifier) {
 
     val imageUrl: String = remember { ("https://image.tmdb.org/t/p/w185"+movie.posterPath) }
 
-    when (val imageResource: Resource<Painter> = lazyPainterResource(imageUrl)) {
+    when (val imageResource = lazyPainterResource(imageUrl)) {
         is Resource.Loading -> {
             CircularProgressIndicator()
         }

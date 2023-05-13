@@ -9,7 +9,7 @@ plugins {
 }
 
 version = "1.0"
-val ktor_version = "1.6.7"
+val ktor_version = "2.3.0"
 
 kotlin {
     android()
@@ -36,7 +36,10 @@ kotlin {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
-        frameworkName = "shared"
+        framework {
+            baseName = "shared"
+            isStatic = true
+        }
         podfile = project.file("../iosApp/Podfile")
     }
 
@@ -52,7 +55,10 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktor_version")
                 implementation("io.ktor:ktor-client-json:$ktor_version")
                 implementation("io.ktor:ktor-client-serialization:$ktor_version")
-                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+                implementation("io.ktor:ktor-client-logging:$ktor_version")
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             }
         }
 
@@ -65,18 +71,10 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktor_version")
-                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
                 implementation("io.ktor:ktor-client-serialization-jvm:$ktor_version")
             }
         }
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
-            }
-        }
-        
-       // val iosTest by getting
 
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -94,6 +92,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-apache:$ktor_version")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
             }
         }
         val jsMain by getting {
